@@ -60,4 +60,15 @@ public class UserInterfaceTests {
         gamePage.clickBtnNext2();
         Assert.assertTrue(gamePage.isPageIndicatorDisplayed("3"), "Card '3' is not open");
     }
+
+    @Test
+    public void test2() {
+        HomePage homePage = new HomePage();
+        Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
+
+        homePage.clickLinkNext();
+        GamePage gamePage = new GamePage();
+        gamePage.clickBtnHideHelp();
+        Assert.assertTrue(gamePage.isHelpHidden(), "Help form is not hidden");
+    }
 }

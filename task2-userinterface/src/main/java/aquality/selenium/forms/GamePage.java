@@ -22,6 +22,8 @@ public class GamePage extends Form {
     private final ICheckBox chbUnselectAll = getElementFactory().getCheckBox(By.xpath("//*[@for='interest_unselectall']"), "Unselect all");
     private final ILink linkUploadPicture = getElementFactory().getLink(By.xpath("//a[contains(@class,'upload-button')]"), "Upload link");
     private final IButton btnNext2 = getElementFactory().getButton(By.xpath("//button[text()='Next']"), "Next button");
+    private final IButton btnHideHelp = getElementFactory().getButton(By.xpath("//button[contains(@class, 'send-to-bottom')]"), "Hide help form");
+    private final ILabel labelHelpTitle = getElementFactory().getLabel(By.className("help-form__title"), "Help form title");
 
     public GamePage() {
         super(By.xpath("//*[@class='game view']"), "Game Page");
@@ -82,5 +84,13 @@ public class GamePage extends Form {
 
     public void clickBtnNext2() {
         btnNext2.click();
+    }
+
+    public void clickBtnHideHelp() {
+        btnHideHelp.click();
+    }
+
+    public boolean isHelpHidden() {
+        return labelHelpTitle.state().waitForNotDisplayed();
     }
 }
