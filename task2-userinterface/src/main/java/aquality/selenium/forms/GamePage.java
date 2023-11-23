@@ -22,6 +22,7 @@ public class GamePage extends Form {
     private final ICheckBox chbUnselectAll = getElementFactory().getCheckBox(By.xpath("//*[@for='interest_unselectall']"), "Unselect all");
     private final ILink linkUploadPicture = getElementFactory().getLink(By.xpath("//a[contains(@class,'upload-button')]"), "Upload link");
     private final IButton btnNext2 = getElementFactory().getButton(By.xpath("//button[text()='Next']"), "Next button");
+    private final ILabel labelTimer = getElementFactory().getLabel(By.xpath("//*[contains(@class, 'timer')]"), "Timer");
 
     public Cookies cookies = new Cookies();
     public Help help = new Help();
@@ -85,5 +86,9 @@ public class GamePage extends Form {
 
     public void clickBtnNext2() {
         btnNext2.click();
+    }
+
+    public String getTimerText() {
+        return labelTimer.getText();
     }
 }

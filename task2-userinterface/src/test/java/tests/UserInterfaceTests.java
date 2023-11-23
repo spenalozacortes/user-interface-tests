@@ -82,4 +82,14 @@ public class UserInterfaceTests {
         gamePage.cookies.clickBtnAcceptCookies();
         Assert.assertFalse(gamePage.cookies.state().isDisplayed(), "Cookies form not closed");
     }
+
+    @Test
+    public void test4() {
+        HomePage homePage = new HomePage();
+//        Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
+
+        homePage.clickLinkNext();
+        GamePage gamePage = new GamePage();
+        Assert.assertEquals(gamePage.getTimerText(), "00:00:00");
+    }
 }
