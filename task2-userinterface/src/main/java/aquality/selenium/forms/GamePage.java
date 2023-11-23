@@ -25,6 +25,8 @@ public class GamePage extends Form {
     private final IButton btnHideHelp = getElementFactory().getButton(By.xpath("//button[contains(@class, 'send-to-bottom')]"), "Hide help form");
     private final ILabel labelHelpTitle = getElementFactory().getLabel(By.className("help-form__title"), "Help form title");
 
+    public Cookies cookies = new Cookies();
+
     public GamePage() {
         super(By.xpath("//*[@class='game view']"), "Game Page");
     }

@@ -71,4 +71,15 @@ public class UserInterfaceTests {
         gamePage.clickBtnHideHelp();
         Assert.assertTrue(gamePage.isHelpHidden(), "Help form is not hidden");
     }
+
+    @Test
+    public void test3() {
+        HomePage homePage = new HomePage();
+        Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
+
+        homePage.clickLinkNext();
+        GamePage gamePage = new GamePage();
+        gamePage.cookies.clickBtnAcceptCookies();
+        Assert.assertFalse(gamePage.cookies.state().isDisplayed(), "Cookies form not closed");
+    }
 }
