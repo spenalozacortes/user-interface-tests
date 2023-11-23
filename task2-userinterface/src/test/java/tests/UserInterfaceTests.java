@@ -68,8 +68,8 @@ public class UserInterfaceTests {
 
         homePage.clickLinkNext();
         GamePage gamePage = new GamePage();
-        gamePage.clickBtnHideHelp();
-        Assert.assertTrue(gamePage.isHelpHidden(), "Help form is not hidden");
+        gamePage.help.clickBtnHideHelp();
+        Assert.assertTrue(gamePage.help.isHelpHidden(), "Help form is not hidden");
     }
 
     @Test
