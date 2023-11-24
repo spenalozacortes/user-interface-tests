@@ -3,6 +3,8 @@ package tests;
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.browser.Browser;
 import aquality.selenium.configuration.Configuration;
+import aquality.selenium.core.utilities.ISettingsFile;
+import aquality.selenium.core.utilities.JsonSettingsFile;
 import aquality.selenium.forms.GamePage;
 import aquality.selenium.forms.HomePage;
 import org.testng.Assert;
@@ -16,6 +18,7 @@ public class UserInterfaceTests {
 
     Browser browser;
     String url;
+    ISettingsFile testData = new JsonSettingsFile("testData.json");
 
     @BeforeMethod
     public void setup() {
@@ -41,7 +44,6 @@ public class UserInterfaceTests {
         GamePage gamePage = new GamePage();
         Assert.assertTrue(gamePage.isPageIndicatorDisplayed("1"), "Card '1' is not open");
 
-        // TODO: data provider
         gamePage.setTxbPassword("Abcde12345"); // TODO: random password
         gamePage.setTxbEmail("abcde");
         gamePage.setTxbDomain("mail");
@@ -51,12 +53,9 @@ public class UserInterfaceTests {
         gamePage.clickBtnNext1();
         Assert.assertTrue(gamePage.isPageIndicatorDisplayed("2"), "Card '2' is not open");
 
-        gamePage.uploadPicture("src/test/resources/java-collections.png");
+        gamePage.uploadPicture(testData.getValue("/image").toString());
         gamePage.checkChbUnselectAll();
-        // TODO: random interests
-        gamePage.selectInterest(0);
-        gamePage.selectInterest(1);
-        gamePage.selectInterest(2);
+        gamePage.selectInterests((Integer) testData.getValue("/interests"));
         gamePage.clickBtnNext2();
         Assert.assertTrue(gamePage.isPageIndicatorDisplayed("3"), "Card '3' is not open");
     }
@@ -90,6 +89,6 @@ public class UserInterfaceTests {
 
         homePage.clickLinkNext();
         GamePage gamePage = new GamePage();
-        Assert.assertEquals(gamePage.getTimerText(), "00:00:00");
+        Assert.assertEquals(gamePage.getTimerText(), testData.getValue("/timer").toString());
     }
 }

@@ -4,10 +4,12 @@ import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.elements.ElementType;
 import aquality.selenium.elements.interfaces.*;
 import aquality.selenium.utils.FileUtils;
+import aquality.selenium.utils.RandomUtils;
 import org.openqa.selenium.By;
 
 import java.awt.*;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GamePage extends Form {
@@ -74,9 +76,20 @@ public class GamePage extends Form {
         chbUnselectAll.check();
     }
 
-    public void selectInterest(int index) {
-        List<ICheckBox> interests = getElementFactory().findElements(By.xpath("//*[contains(@for,'interest')]"), ElementType.CHECKBOX);
-        interests.get(index).check();
+    public void selectInterests(int numberOfInterests) {
+        List<ICheckBox> options = getElementFactory().findElements(By.xpath("//*[contains(@for, 'interest') and not(contains(@for, 'selectall'))]"), ElementType.CHECKBOX);
+        List<Integer> randomIndices = new ArrayList<>();
+
+        for (int i = 0; i < numberOfInterests; i++) {
+            int index = RandomUtils.getRandomInt(options.size());
+            if (!randomIndices.contains(index)) {
+                randomIndices.add(index);
+            }
+        }
+
+        for (int index : randomIndices) {
+            options.get(index).check();
+        }
     }
 
     public void uploadPicture(String path) throws AWTException {
