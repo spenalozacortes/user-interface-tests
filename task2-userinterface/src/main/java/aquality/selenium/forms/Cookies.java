@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 public class Cookies extends Form {
 
     private final IButton btnAcceptCookies = getElementFactory().getButton(By.xpath("//button[text()='Not really, no']"), "Accept cookies");
+
     public Cookies() {
         super(By.className("cookies"), "Cookies");
     }

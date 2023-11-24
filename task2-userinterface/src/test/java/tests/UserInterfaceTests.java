@@ -59,9 +59,12 @@ public class UserInterfaceTests {
         gamePage.clickBtnNext1();
         Assert.assertTrue(gamePage.isPageIndicatorDisplayed("2"), "Card '2' is not open");
 
-        gamePage.uploadPicture(testData.getValue("/image").toString());
+        String imagePath = testData.getValue("/image").toString();
+        int numberOfInterests = (int) testData.getValue("/interests");
+
+        gamePage.uploadPicture(imagePath);
         gamePage.checkChbUnselectAll();
-        gamePage.selectInterests((Integer) testData.getValue("/interests"));
+        gamePage.selectInterests(numberOfInterests);
         gamePage.clickBtnNext2();
         Assert.assertTrue(gamePage.isPageIndicatorDisplayed("3"), "Card '3' is not open");
     }
@@ -91,10 +94,13 @@ public class UserInterfaceTests {
     @Test
     public void test4() {
         HomePage homePage = new HomePage();
-//        Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
+        Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickLinkNext();
         GamePage gamePage = new GamePage();
-        Assert.assertEquals(gamePage.getTimerText(), testData.getValue("/timer").toString(), "Timer starts wrong");
+
+        String expectedTimer = testData.getValue("/timer").toString();
+
+        Assert.assertEquals(gamePage.getTimerText(), expectedTimer, "Timer doesn't start at expected value");
     }
 }
