@@ -7,6 +7,7 @@ import aquality.selenium.core.utilities.ISettingsFile;
 import aquality.selenium.core.utilities.JsonSettingsFile;
 import aquality.selenium.forms.GamePage;
 import aquality.selenium.forms.HomePage;
+import aquality.selenium.utils.RandomUtils;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -44,11 +45,16 @@ public class UserInterfaceTests {
         GamePage gamePage = new GamePage();
         Assert.assertTrue(gamePage.isPageIndicatorDisplayed("1"), "Card '1' is not open");
 
-        gamePage.setTxbPassword("Abcde12345"); // TODO: random password
-        gamePage.setTxbEmail("abcde");
-        gamePage.setTxbDomain("mail");
+        String email = RandomUtils.generateRandomEmail();
+        String password = RandomUtils.generateRandomPassword(email);
+        String domain = testData.getValue("/domain").toString();
+        String suffix = testData.getValue("/suffix").toString();
+
+        gamePage.setPassword(password);
+        gamePage.setEmail(email);
+        gamePage.setDomain(domain);
         gamePage.clickBtnDropdown();
-        gamePage.selectDropdownByText(".com");
+        gamePage.selectSuffix(suffix);
         gamePage.checkChbTerms();
         gamePage.clickBtnNext1();
         Assert.assertTrue(gamePage.isPageIndicatorDisplayed("2"), "Card '2' is not open");
@@ -79,7 +85,7 @@ public class UserInterfaceTests {
         homePage.clickLinkNext();
         GamePage gamePage = new GamePage();
         gamePage.cookies.clickBtnAcceptCookies();
-        Assert.assertFalse(gamePage.cookies.state().isDisplayed(), "Cookies form not closed");
+        Assert.assertFalse(gamePage.cookies.state().isDisplayed(), "Cookies form is not closed");
     }
 
     @Test
@@ -89,6 +95,6 @@ public class UserInterfaceTests {
 
         homePage.clickLinkNext();
         GamePage gamePage = new GamePage();
-        Assert.assertEquals(gamePage.getTimerText(), testData.getValue("/timer").toString());
+        Assert.assertEquals(gamePage.getTimerText(), testData.getValue("/timer").toString(), "Timer starts wrong");
     }
 }

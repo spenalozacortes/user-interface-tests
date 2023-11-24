@@ -38,15 +38,15 @@ public class GamePage extends Form {
                 Duration.ofSeconds(10));
     }
 
-    public void setTxbPassword(String password) {
+    public void setPassword(String password) {
         txbPassword.clearAndType(password);
     }
 
-    public void setTxbEmail(String email) {
+    public void setEmail(String email) {
         txbEmail.clearAndType(email);
     }
 
-    public void setTxbDomain(String domain) {
+    public void setDomain(String domain) {
         txbDomain.clearAndType(domain);
     }
 
@@ -54,7 +54,7 @@ public class GamePage extends Form {
         btnDropdown.click();
     }
 
-    public void selectDropdownByText(String text) {
+    public void selectSuffix(String text) {
         List<ILabel> dropdownOptions = getElementFactory().findElements(By.xpath("//*[@class='dropdown__list-item']"), ElementType.LABEL);
         for (ILabel option: dropdownOptions) {
             if(option.getText().equals(text)) {
