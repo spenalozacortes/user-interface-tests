@@ -12,7 +12,7 @@ public class CookiesForm extends Form {
         super(By.className("cookies"), "Cookies");
     }
 
-    public void clickBtnAcceptCookies() {
+    public void clickAcceptCookiesBtn() {
         acceptCookiesBtn.click();
     }
 }

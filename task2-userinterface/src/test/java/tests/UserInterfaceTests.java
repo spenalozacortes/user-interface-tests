@@ -76,9 +76,9 @@ public class UserInterfaceTests {
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickLinkNext();
-        GamePage gamePage = new GamePage();
-        gamePage.help.clickBtnHideHelp();
-        Assert.assertTrue(gamePage.help.isHelpHidden(), "Help form is not hidden");
+        HelpForm helpForm = new HelpForm();
+        helpForm.clickHideHelpBtn();
+        Assert.assertTrue(helpForm.state().waitForNotDisplayed(), "Help form is not hidden");
     }
 
     @Test
@@ -87,9 +87,9 @@ public class UserInterfaceTests {
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickLinkNext();
-        GamePage gamePage = new GamePage();
-        gamePage.cookies.clickBtnAcceptCookies();
-        Assert.assertFalse(gamePage.cookies.state().isDisplayed(), "Cookies form is not closed");
+        CookiesForm cookiesForm = new CookiesForm();
+        cookiesForm.clickAcceptCookiesBtn();
+        Assert.assertTrue(cookiesForm.state().waitForNotDisplayed(), "Cookies form is not closed");
     }
 
     @Test
