@@ -2,16 +2,16 @@ package tests;
 
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.browser.Browser;
-import aquality.selenium.configuration.Configuration;
 import aquality.selenium.core.utilities.ISettingsFile;
 import aquality.selenium.core.utilities.JsonSettingsFile;
-import aquality.selenium.forms.GamePage;
-import aquality.selenium.forms.HomePage;
-import aquality.selenium.utils.RandomUtils;
+import config.Configuration;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.GamePage;
+import pages.HomePage;
+import utils.RandomUtils;
 
 import java.awt.*;
 

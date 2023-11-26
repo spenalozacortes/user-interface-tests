@@ -1,4 +1,4 @@
-package aquality.selenium.utils;
+package utils;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;

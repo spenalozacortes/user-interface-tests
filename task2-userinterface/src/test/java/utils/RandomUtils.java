@@ -1,4 +1,4 @@
-package aquality.selenium.utils;
+package utils;
 
 import aquality.selenium.core.utilities.ISettingsFile;
 import aquality.selenium.core.utilities.JsonSettingsFile;

@@ -1,7 +1,8 @@
-package aquality.selenium.forms;
+package pages;
 
 import aquality.selenium.elements.interfaces.IButton;
 import aquality.selenium.elements.interfaces.ILabel;
+import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
 public class Help extends Form {

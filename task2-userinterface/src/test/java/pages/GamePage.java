@@ -1,11 +1,12 @@
-package aquality.selenium.forms;
+package pages;
 
 import aquality.selenium.browser.AqualityServices;
 import aquality.selenium.elements.ElementType;
 import aquality.selenium.elements.interfaces.*;
-import aquality.selenium.utils.FileUtils;
-import aquality.selenium.utils.RandomUtils;
+import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
+import utils.FileUtils;
+import utils.RandomUtils;
 
 import java.awt.*;
 import java.time.Duration;
