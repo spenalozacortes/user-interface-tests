@@ -5,8 +5,9 @@ import aquality.selenium.core.utilities.JsonSettingsFile;
 
 public class Configuration {
 
+    static ISettingsFile environment = new JsonSettingsFile("config.json");
+
     public static String getUrl() {
-        ISettingsFile environment = new JsonSettingsFile("config.json");
         return environment.getValue("/url").toString();
     }
 }
