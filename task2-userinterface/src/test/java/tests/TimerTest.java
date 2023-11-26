@@ -20,9 +20,8 @@ public class TimerTest extends BaseTest {
 
         homePage.clickLinkNext();
         loginForm = new LoginForm();
-
         String expectedTimer = testData.getValue("/timer").toString();
-
-        Assert.assertEquals(loginForm.getTimerText(), expectedTimer, "Timer doesn't start at expected value");
+        String actualTimer = loginForm.getTimerText();
+        Assert.assertEquals(actualTimer, expectedTimer, String.format("Timer starts at %s instead of %s", actualTimer, expectedTimer));
     }
 }
