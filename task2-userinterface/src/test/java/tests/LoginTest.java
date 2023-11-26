@@ -14,14 +14,18 @@ import static aquality.selenium.browser.AqualityServices.getBrowser;
 
 public class LoginTest extends BaseTest {
 
+    HomePageForm homePage;
+    LoginForm loginForm;
+    InterestsForm interestsForm;
+
     @Test
     public void loginTest() throws AWTException {
         getBrowser().goTo(url);
-        HomePageForm homePage = new HomePageForm();
+        homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickLinkNext();
-        LoginForm loginForm = new LoginForm();
+        loginForm = new LoginForm();
         Assert.assertTrue(loginForm.state().waitForDisplayed(), "Card '1' is not open");
 
         String email = RandomUtils.generateRandomEmail();
@@ -36,7 +40,7 @@ public class LoginTest extends BaseTest {
         loginForm.selectSuffix(suffix);
         loginForm.checkChbTerms();
         loginForm.clickBtnNext();
-        InterestsForm interestsForm = new InterestsForm();
+        interestsForm = new InterestsForm();
         Assert.assertTrue(interestsForm.state().waitForDisplayed(), "Card '2' is not open");
 
         String imagePath = testData.getValue("/image").toString();

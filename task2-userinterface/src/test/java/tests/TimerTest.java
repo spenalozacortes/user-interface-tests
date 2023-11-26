@@ -9,14 +9,17 @@ import static aquality.selenium.browser.AqualityServices.getBrowser;
 
 public class TimerTest extends BaseTest {
 
+    HomePageForm homePage;
+    LoginForm loginForm;
+
     @Test
     public void timerTest() {
         getBrowser().goTo(url);
-        HomePageForm homePage = new HomePageForm();
+        homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickLinkNext();
-        LoginForm loginForm = new LoginForm();
+        loginForm = new LoginForm();
 
         String expectedTimer = testData.getValue("/timer").toString();
 

@@ -9,14 +9,17 @@ import static aquality.selenium.browser.AqualityServices.getBrowser;
 
 public class AcceptCookiesTest extends BaseTest {
 
+    HomePageForm homePage;
+    CookiesForm cookiesForm;
+
     @Test
     public void acceptCookiesTest() {
         getBrowser().goTo(url);
-        HomePageForm homePage = new HomePageForm();
+        homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickLinkNext();
-        CookiesForm cookiesForm = new CookiesForm();
+        cookiesForm = new CookiesForm();
         cookiesForm.clickAcceptCookiesBtn();
         Assert.assertTrue(cookiesForm.state().waitForNotDisplayed(), "Cookies form is not closed");
     }
