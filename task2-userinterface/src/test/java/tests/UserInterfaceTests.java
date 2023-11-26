@@ -1,11 +1,6 @@
 package tests;
 
-import aquality.selenium.core.utilities.ISettingsFile;
-import aquality.selenium.core.utilities.JsonSettingsFile;
-import config.Configuration;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
 import utils.RandomUtils;
@@ -14,22 +9,7 @@ import java.awt.*;
 
 import static aquality.selenium.browser.AqualityServices.getBrowser;
 
-public class UserInterfaceTests {
-
-    String url;
-    ISettingsFile testData = new JsonSettingsFile("testData.json");
-
-    @BeforeMethod
-    public void setup() {
-        url = Configuration.getUrl();
-
-        getBrowser().maximize();
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        getBrowser().quit();
-    }
+public class UserInterfaceTests extends BaseTest {
 
     @Test
     public void test1() throws AWTException {
