@@ -7,11 +7,13 @@ import java.io.File;
 
 public class FileUtils {
 
+    private static final int delay = 3000;
+
     public static void handleFileDialog(String path) throws AWTException {
         Robot robot = new Robot();
         String filePath = new File(path).getAbsolutePath();
         StringSelection stringSelection = new StringSelection(filePath);
-        robot.delay(3000);
+        robot.delay(delay);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 
         robot.keyPress(KeyEvent.VK_CONTROL);
