@@ -20,6 +20,8 @@ public class LoginForm extends Form {
     private final IButton nextBtn = getElementFactory().getButton(By.xpath("//*[@class='button--secondary']"), "Next");
     private final ILabel timerLbl = getElementFactory().getLabel(By.xpath("//*[contains(@class, 'timer')]"), "Timer");
 
+    private final By dropdownBy = By.xpath("//*[@class='dropdown__list-item']");
+
     public LoginForm() {
         super(By.xpath("//*[@class='page-indicator' and text()='1 / 4']"), "Card 1");
     }
@@ -41,7 +43,7 @@ public class LoginForm extends Form {
     }
 
     public void selectSuffix(String text) {
-        List<ILabel> dropdownOptions = getElementFactory().findElements(By.xpath("//*[@class='dropdown__list-item']"), ElementType.LABEL);
+        List<ILabel> dropdownOptions = getElementFactory().findElements(dropdownBy, ElementType.LABEL);
         for (ILabel option: dropdownOptions) {
             if(option.getText().equals(text)) {
                 option.click();
