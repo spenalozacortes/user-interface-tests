@@ -2,17 +2,20 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.HomePageForm;
+import pages.InterestsForm;
+import pages.LoginForm;
+import pages.PersonalDetailsForm;
 import utils.RandomUtils;
 
 import java.awt.*;
 
 import static aquality.selenium.browser.AqualityServices.getBrowser;
 
-public class UserInterfaceTests extends BaseTest {
+public class LoginTest extends BaseTest {
 
     @Test
-    public void test1() throws AWTException {
+    public void loginTest() throws AWTException {
         getBrowser().goTo(url);
         HomePageForm homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
@@ -45,43 +48,5 @@ public class UserInterfaceTests extends BaseTest {
         interestsForm.clickBtnNext();
         PersonalDetailsForm personalDetailsForm = new PersonalDetailsForm();
         Assert.assertTrue(personalDetailsForm.state().waitForDisplayed(), "Card '3' is not open");
-    }
-
-    @Test
-    public void test2() {
-        getBrowser().goTo(url);
-        HomePageForm homePage = new HomePageForm();
-        Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
-
-        homePage.clickLinkNext();
-        HelpForm helpForm = new HelpForm();
-        helpForm.clickHideHelpBtn();
-        Assert.assertTrue(helpForm.state().waitForNotDisplayed(), "Help form is not hidden");
-    }
-
-    @Test
-    public void test3() {
-        getBrowser().goTo(url);
-        HomePageForm homePage = new HomePageForm();
-        Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
-
-        homePage.clickLinkNext();
-        CookiesForm cookiesForm = new CookiesForm();
-        cookiesForm.clickAcceptCookiesBtn();
-        Assert.assertTrue(cookiesForm.state().waitForNotDisplayed(), "Cookies form is not closed");
-    }
-
-    @Test
-    public void test4() {
-        getBrowser().goTo(url);
-        HomePageForm homePage = new HomePageForm();
-        Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
-
-        homePage.clickLinkNext();
-        LoginForm loginForm = new LoginForm();
-
-        String expectedTimer = testData.getValue("/timer").toString();
-
-        Assert.assertEquals(loginForm.getTimerText(), expectedTimer, "Timer doesn't start at expected value");
     }
 }
