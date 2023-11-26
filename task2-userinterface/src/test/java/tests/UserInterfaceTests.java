@@ -9,8 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.GamePage;
-import pages.HomePage;
+import pages.*;
 import utils.RandomUtils;
 
 import java.awt.*;
@@ -38,40 +37,42 @@ public class UserInterfaceTests {
 
     @Test
     public void test1() throws AWTException {
-        HomePage homePage = new HomePage();
+        HomePageForm homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickLinkNext();
-        GamePage gamePage = new GamePage();
-        Assert.assertTrue(gamePage.isPageIndicatorDisplayed("1"), "Card '1' is not open");
+        LoginForm loginForm = new LoginForm();
+        Assert.assertTrue(loginForm.state().waitForDisplayed(), "Card '1' is not open");
 
         String email = RandomUtils.generateRandomEmail();
         String password = RandomUtils.generateRandomPassword(email);
         String domain = testData.getValue("/domain").toString();
         String suffix = testData.getValue("/suffix").toString();
 
-        gamePage.setPassword(password);
-        gamePage.setEmail(email);
-        gamePage.setDomain(domain);
-        gamePage.clickBtnDropdown();
-        gamePage.selectSuffix(suffix);
-        gamePage.checkChbTerms();
-        gamePage.clickBtnNext1();
-        Assert.assertTrue(gamePage.isPageIndicatorDisplayed("2"), "Card '2' is not open");
+        loginForm.setPassword(password);
+        loginForm.setEmail(email);
+        loginForm.setDomain(domain);
+        loginForm.clickBtnDropdown();
+        loginForm.selectSuffix(suffix);
+        loginForm.checkChbTerms();
+        loginForm.clickBtnNext();
+        InterestsForm interestsForm = new InterestsForm();
+        Assert.assertTrue(interestsForm.state().waitForDisplayed(), "Card '2' is not open");
 
         String imagePath = testData.getValue("/image").toString();
         int numberOfInterests = (int) testData.getValue("/interests");
 
-        gamePage.uploadPicture(imagePath);
-        gamePage.checkChbUnselectAll();
-        gamePage.selectInterests(numberOfInterests);
-        gamePage.clickBtnNext2();
-        Assert.assertTrue(gamePage.isPageIndicatorDisplayed("3"), "Card '3' is not open");
+        interestsForm.uploadPicture(imagePath);
+        interestsForm.checkChbUnselectAll();
+        interestsForm.selectInterests(numberOfInterests);
+        interestsForm.clickBtnNext();
+        PersonalDetailsForm personalDetailsForm = new PersonalDetailsForm();
+        Assert.assertTrue(personalDetailsForm.state().waitForDisplayed(), "Card '3' is not open");
     }
 
     @Test
     public void test2() {
-        HomePage homePage = new HomePage();
+        HomePageForm homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickLinkNext();
@@ -82,7 +83,7 @@ public class UserInterfaceTests {
 
     @Test
     public void test3() {
-        HomePage homePage = new HomePage();
+        HomePageForm homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickLinkNext();
@@ -93,14 +94,14 @@ public class UserInterfaceTests {
 
     @Test
     public void test4() {
-        HomePage homePage = new HomePage();
+        HomePageForm homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickLinkNext();
-        GamePage gamePage = new GamePage();
+        LoginForm loginForm = new LoginForm();
 
         String expectedTimer = testData.getValue("/timer").toString();
 
-        Assert.assertEquals(gamePage.getTimerText(), expectedTimer, "Timer doesn't start at expected value");
+        Assert.assertEquals(loginForm.getTimerText(), expectedTimer, "Timer doesn't start at expected value");
     }
 }

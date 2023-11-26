@@ -5,12 +5,12 @@ import aquality.selenium.elements.interfaces.ILabel;
 import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
-public class Help extends Form {
+public class HelpForm extends Form {
 
     private final IButton hideHelpBtn = getElementFactory().getButton(By.xpath("//button[contains(@class, 'send-to-bottom')]"), "Hide help form");
     private final ILabel helpTitleLbl = getElementFactory().getLabel(By.className("help-form__title"), "Help form title");
 
-    public Help() {
+    public HelpForm() {
         super(By.xpath("//a[contains(@class, 'help-button')]"), "Help form");
     }
 

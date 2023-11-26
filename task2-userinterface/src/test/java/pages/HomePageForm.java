@@ -4,11 +4,11 @@ import aquality.selenium.elements.interfaces.ILink;
 import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
 
-public class HomePage extends Form {
+public class HomePageForm extends Form {
 
     private final ILink nextLink = getElementFactory().getLink(By.className("start__link"), "Next");
 
-    public HomePage() {
+    public HomePageForm() {
         super(By.className("start__button"), "Home Page");
     }
 
