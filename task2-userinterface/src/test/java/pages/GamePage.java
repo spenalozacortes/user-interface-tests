@@ -16,16 +16,16 @@ import java.util.List;
 public class GamePage extends Form {
 
     private final ILabel pageIndicator = getElementFactory().getLabel(By.className("page-indicator"), "Page indicator");
-    private final ITextBox txbPassword = getElementFactory().getTextBox(By.xpath("//*[@placeholder='Choose Password']"), "Password text box");
-    private final ITextBox txbEmail = getElementFactory().getTextBox(By.xpath("//*[@placeholder='Your email']"), "Password");
-    private final ITextBox txbDomain = getElementFactory().getTextBox(By.xpath("//*[@placeholder='Domain']"), "Domain");
-    private final IButton btnDropdown = getElementFactory().getButton(By.className("dropdown__opener"), "Dropdown");
-    private final ICheckBox chbTerms = getElementFactory().getCheckBox(By.xpath("//*[contains(@class, 'icon-check')]"), "Terms and conditions");
-    private final IButton btnNext1 = getElementFactory().getButton(By.xpath("//*[@class='button--secondary']"), "Next");
-    private final ICheckBox chbUnselectAll = getElementFactory().getCheckBox(By.xpath("//*[@for='interest_unselectall']"), "Unselect all");
-    private final ILink linkUploadPicture = getElementFactory().getLink(By.xpath("//a[contains(@class,'upload-button')]"), "Upload link");
-    private final IButton btnNext2 = getElementFactory().getButton(By.xpath("//button[text()='Next']"), "Next button");
-    private final ILabel labelTimer = getElementFactory().getLabel(By.xpath("//*[contains(@class, 'timer')]"), "Timer");
+    private final ITextBox passwordTxb = getElementFactory().getTextBox(By.xpath("//*[@placeholder='Choose Password']"), "Password text box");
+    private final ITextBox emailTxb = getElementFactory().getTextBox(By.xpath("//*[@placeholder='Your email']"), "Password");
+    private final ITextBox domainTxb = getElementFactory().getTextBox(By.xpath("//*[@placeholder='Domain']"), "Domain");
+    private final IButton dropdownBtn = getElementFactory().getButton(By.className("dropdown__opener"), "Dropdown");
+    private final ICheckBox termsCb = getElementFactory().getCheckBox(By.xpath("//*[contains(@class, 'icon-check')]"), "Terms and conditions");
+    private final IButton nextBtn1 = getElementFactory().getButton(By.xpath("//*[@class='button--secondary']"), "Next");
+    private final ICheckBox unselectAllCb = getElementFactory().getCheckBox(By.xpath("//*[@for='interest_unselectall']"), "Unselect all");
+    private final ILink uploadPictureLink = getElementFactory().getLink(By.xpath("//a[contains(@class,'upload-button')]"), "Upload link");
+    private final IButton nextBtn2 = getElementFactory().getButton(By.xpath("//button[text()='Next']"), "Next button");
+    private final ILabel timerLbl = getElementFactory().getLabel(By.xpath("//*[contains(@class, 'timer')]"), "Timer");
 
     public Cookies cookies = new Cookies();
     public Help help = new Help();
@@ -40,19 +40,19 @@ public class GamePage extends Form {
     }
 
     public void setPassword(String password) {
-        txbPassword.clearAndType(password);
+        passwordTxb.clearAndType(password);
     }
 
     public void setEmail(String email) {
-        txbEmail.clearAndType(email);
+        emailTxb.clearAndType(email);
     }
 
     public void setDomain(String domain) {
-        txbDomain.clearAndType(domain);
+        domainTxb.clearAndType(domain);
     }
 
     public void clickBtnDropdown() {
-        btnDropdown.click();
+        dropdownBtn.click();
     }
 
     public void selectSuffix(String text) {
@@ -66,15 +66,15 @@ public class GamePage extends Form {
     }
 
     public void checkChbTerms() {
-        chbTerms.check();
+        termsCb.check();
     }
 
     public void clickBtnNext1() {
-        btnNext1.click();
+        nextBtn1.click();
     }
 
     public void checkChbUnselectAll() {
-        chbUnselectAll.check();
+        unselectAllCb.check();
     }
 
     public void selectInterests(int numberOfInterests) {
@@ -94,15 +94,15 @@ public class GamePage extends Form {
     }
 
     public void uploadPicture(String path) throws AWTException {
-        linkUploadPicture.click();
+        uploadPictureLink.click();
         FileUtils.handleFileDialog(path);
     }
 
     public void clickBtnNext2() {
-        btnNext2.click();
+        nextBtn2.click();
     }
 
     public String getTimerText() {
-        return labelTimer.getText();
+        return timerLbl.getText();
     }
 }
