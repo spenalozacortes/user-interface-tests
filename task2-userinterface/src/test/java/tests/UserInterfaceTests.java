@@ -1,7 +1,5 @@
 package tests;
 
-import aquality.selenium.browser.AqualityServices;
-import aquality.selenium.browser.Browser;
 import aquality.selenium.core.utilities.ISettingsFile;
 import aquality.selenium.core.utilities.JsonSettingsFile;
 import config.Configuration;
@@ -14,29 +12,28 @@ import utils.RandomUtils;
 
 import java.awt.*;
 
+import static aquality.selenium.browser.AqualityServices.getBrowser;
+
 public class UserInterfaceTests {
 
-    Browser browser;
     String url;
     ISettingsFile testData = new JsonSettingsFile("testData.json");
 
     @BeforeMethod
     public void setup() {
-        browser = AqualityServices.getBrowser();
         url = Configuration.getUrl();
 
-        browser.maximize();
-        browser.goTo(url);
-        browser.waitForPageToLoad();
+        getBrowser().maximize();
     }
 
     @AfterMethod
     public void tearDown() {
-        browser.quit();
+        getBrowser().quit();
     }
 
     @Test
     public void test1() throws AWTException {
+        getBrowser().goTo(url);
         HomePageForm homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
@@ -72,6 +69,7 @@ public class UserInterfaceTests {
 
     @Test
     public void test2() {
+        getBrowser().goTo(url);
         HomePageForm homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
@@ -83,6 +81,7 @@ public class UserInterfaceTests {
 
     @Test
     public void test3() {
+        getBrowser().goTo(url);
         HomePageForm homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
@@ -94,6 +93,7 @@ public class UserInterfaceTests {
 
     @Test
     public void test4() {
+        getBrowser().goTo(url);
         HomePageForm homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
