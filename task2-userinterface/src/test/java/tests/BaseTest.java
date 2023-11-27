@@ -2,7 +2,7 @@ package tests;
 
 import aquality.selenium.core.utilities.ISettingsFile;
 import aquality.selenium.core.utilities.JsonSettingsFile;
-import config.Configuration;
+import config.EnvironmentConfig;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -15,7 +15,7 @@ public abstract class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        url = Configuration.getUrl();
+        url = EnvironmentConfig.getUrl();
         getBrowser().maximize();
     }
 
