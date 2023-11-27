@@ -30,7 +30,7 @@ public class LoginTest extends BaseTest {
 
         homePage.clickNextLink();
         loginForm = new LoginForm();
-        Assert.assertTrue(loginForm.state().waitForDisplayed(), "Card '1' is not open");
+        Assert.assertTrue(loginForm.state().waitForDisplayed(), "Login form should be displayed");
 
         String email = RandomUtils.generateRandomString(EMAIL_LENGTH);
         String password = RandomUtils.generateRandomPassword(PASSWORD_LENGTH, email);
@@ -44,13 +44,13 @@ public class LoginTest extends BaseTest {
         loginForm.checkTermsCb();
         loginForm.clickNextBtn();
         interestsForm = new InterestsForm();
-        Assert.assertTrue(interestsForm.state().waitForDisplayed(), "Card '2' is not open");
+        Assert.assertTrue(interestsForm.state().waitForDisplayed(), "Interests form should be displayed");
 
         interestsForm.uploadPicture(IMAGE_PATH);
         interestsForm.checkUnselectAllCb();
         interestsForm.selectRandomInterests(INTERESTS);
         interestsForm.clickNextBtn();
         PersonalDetailsForm personalDetailsForm = new PersonalDetailsForm();
-        Assert.assertTrue(personalDetailsForm.state().waitForDisplayed(), "Card '3' is not open");
+        Assert.assertTrue(personalDetailsForm.state().waitForDisplayed(), "Personal details form should be displayed");
     }
 }
