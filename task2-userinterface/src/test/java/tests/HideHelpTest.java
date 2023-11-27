@@ -9,8 +9,8 @@ import static aquality.selenium.browser.AqualityServices.getBrowser;
 
 public class HideHelpTest extends BaseTest {
 
-    HomePageForm homePage;
-    HelpForm helpForm;
+    private HomePageForm homePage;
+    private HelpForm helpForm;
 
     @Test
     public void hideHelpTest() {

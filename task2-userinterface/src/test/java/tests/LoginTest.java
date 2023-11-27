@@ -12,15 +12,14 @@ import static aquality.selenium.browser.AqualityServices.getBrowser;
 
 public class LoginTest extends BaseTest {
 
-    HomePageForm homePage;
-    LoginForm loginForm;
-    InterestsForm interestsForm;
-
-    final static int EMAIL_LENGTH = 8;
-    final static int PASSWORD_LENGTH = 10;
-    final static int DOMAIN_LENGTH = 5;
-    final static int INTERESTS = 3;
-    final static String IMAGE_PATH = "src/test/resources/java-collections.png";
+    private HomePageForm homePage;
+    private LoginForm loginForm;
+    private InterestsForm interestsForm;
+    private static final int EMAIL_LENGTH = 8;
+    private static final int PASSWORD_LENGTH = 10;
+    private static final int DOMAIN_LENGTH = 5;
+    private static final int INTERESTS = 3;
+    private static final String IMAGE_PATH = "src/test/resources/java-collections.png";
 
     @Test
     public void loginTest() {
@@ -40,7 +39,7 @@ public class LoginTest extends BaseTest {
         loginForm.setEmail(email);
         loginForm.setDomain(domain);
         loginForm.clickDropdownBtn();
-        loginForm.selectSuffix();
+        loginForm.selectRandomSuffix();
         loginForm.checkTermsCb();
         loginForm.clickNextBtn();
         interestsForm = new InterestsForm();
@@ -48,7 +47,7 @@ public class LoginTest extends BaseTest {
 
         interestsForm.uploadPicture(IMAGE_PATH);
         interestsForm.checkUnselectAllCb();
-        interestsForm.selectInterests(INTERESTS);
+        interestsForm.selectRandomInterests(INTERESTS);
         interestsForm.clickNextBtn();
         PersonalDetailsForm personalDetailsForm = new PersonalDetailsForm();
         Assert.assertTrue(personalDetailsForm.state().waitForDisplayed(), "Card '3' is not open");

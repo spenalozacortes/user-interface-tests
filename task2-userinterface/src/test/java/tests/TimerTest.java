@@ -9,10 +9,9 @@ import static aquality.selenium.browser.AqualityServices.getBrowser;
 
 public class TimerTest extends BaseTest {
 
-    HomePageForm homePage;
-    LoginForm loginForm;
-
-    static final String TIMER = "00:00:00";
+    private HomePageForm homePage;
+    private LoginForm loginForm;
+    private static final String TIMER = "00:00:00";
 
     @Test
     public void timerTest() {

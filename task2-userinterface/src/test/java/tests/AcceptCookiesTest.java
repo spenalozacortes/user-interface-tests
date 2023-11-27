@@ -9,8 +9,8 @@ import static aquality.selenium.browser.AqualityServices.getBrowser;
 
 public class AcceptCookiesTest extends BaseTest {
 
-    HomePageForm homePage;
-    CookiesForm cookiesForm;
+    private HomePageForm homePage;
+    private CookiesForm cookiesForm;
 
     @Test
     public void acceptCookiesTest() {

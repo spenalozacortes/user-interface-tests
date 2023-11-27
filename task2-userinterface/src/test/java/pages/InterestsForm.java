@@ -17,8 +17,7 @@ public class InterestsForm extends Form {
     private final ICheckBox unselectAllCb = getElementFactory().getCheckBox(By.xpath("//*[@for='interest_unselectall']"), "Unselect all");
     private final ILink uploadPictureLink = getElementFactory().getLink(By.xpath("//a[contains(@class,'upload-button')]"), "Upload link");
     private final IButton nextBtn = getElementFactory().getButton(By.xpath("//button[text()='Next']"), "Next button");
-
-    private final By optionsBy = By.xpath("//*[contains(@for, 'interest') and not(contains(@for, 'selectall'))]");
+    private static final By OPTIONS_BY = By.xpath("//*[contains(@for, 'interest') and not(contains(@for, 'selectall'))]");
 
     public InterestsForm() {
         super(By.xpath("//*[@class='page-indicator' and text()='2 / 4']"), "Card 2");
@@ -28,8 +27,8 @@ public class InterestsForm extends Form {
         unselectAllCb.check();
     }
 
-    public void selectInterests(int numberOfInterests) {
-        List<ICheckBox> options = getElementFactory().findElements(optionsBy, ElementType.CHECKBOX);
+    public void selectRandomInterests(int numberOfInterests) {
+        List<ICheckBox> options = getElementFactory().findElements(OPTIONS_BY, ElementType.CHECKBOX);
         List<Integer> randomIndices = new ArrayList<>();
 
         for (int i = 0; i < numberOfInterests; i++) {

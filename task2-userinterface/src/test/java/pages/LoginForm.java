@@ -20,8 +20,7 @@ public class LoginForm extends Form {
     private final ICheckBox termsCb = getElementFactory().getCheckBox(By.xpath("//*[contains(@class, 'icon-check')]"), "Terms and conditions");
     private final IButton nextBtn = getElementFactory().getButton(By.xpath("//*[@class='button--secondary']"), "Next");
     private final ILabel timerLbl = getElementFactory().getLabel(By.xpath("//*[contains(@class, 'timer')]"), "Timer");
-
-    private final By dropdownBy = By.xpath("//*[@class='dropdown__list-item']");
+    private static final By DROPDOWN_BY = By.xpath("//*[@class='dropdown__list-item']");
 
     public LoginForm() {
         super(By.xpath("//*[@class='page-indicator' and text()='1 / 4']"), "Card 1");
@@ -43,8 +42,8 @@ public class LoginForm extends Form {
         dropdownBtn.click();
     }
 
-    public void selectSuffix() {
-        List<ILabel> dropdownOptions = getElementFactory().findElements(dropdownBy, ElementType.LABEL);
+    public void selectRandomSuffix() {
+        List<ILabel> dropdownOptions = getElementFactory().findElements(DROPDOWN_BY, ElementType.LABEL);
         ILabel randomOption = dropdownOptions.get(RandomUtils.getRandomInt(dropdownOptions.size()));
         randomOption.click();
     }
