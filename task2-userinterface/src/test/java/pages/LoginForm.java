@@ -7,6 +7,7 @@ import aquality.selenium.elements.interfaces.ILabel;
 import aquality.selenium.elements.interfaces.ITextBox;
 import aquality.selenium.forms.Form;
 import org.openqa.selenium.By;
+import utils.RandomUtils;
 
 import java.util.List;
 
@@ -38,25 +39,21 @@ public class LoginForm extends Form {
         domainTxb.clearAndType(domain);
     }
 
-    public void clickBtnDropdown() {
+    public void clickDropdownBtn() {
         dropdownBtn.click();
     }
 
-    public void selectSuffix(String text) {
+    public void selectSuffix() {
         List<ILabel> dropdownOptions = getElementFactory().findElements(dropdownBy, ElementType.LABEL);
-        for (ILabel option: dropdownOptions) {
-            if(option.getText().equals(text)) {
-                option.click();
-                break;
-            }
-        }
+        ILabel randomOption = dropdownOptions.get(RandomUtils.getRandomInt(dropdownOptions.size()));
+        randomOption.click();
     }
 
-    public void checkChbTerms() {
+    public void checkTermsCb() {
         termsCb.check();
     }
 
-    public void clickBtnNext() {
+    public void clickNextBtn() {
         nextBtn.click();
     }
 

@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import utils.FileUtils;
 import utils.RandomUtils;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class InterestsForm extends Form {
         super(By.xpath("//*[@class='page-indicator' and text()='2 / 4']"), "Card 2");
     }
 
-    public void checkChbUnselectAll() {
+    public void checkUnselectAllCb() {
         unselectAllCb.check();
     }
 
@@ -45,12 +44,12 @@ public class InterestsForm extends Form {
         }
     }
 
-    public void uploadPicture(String path) throws AWTException {
+    public void uploadPicture(String path) {
         uploadPictureLink.click();
         FileUtils.handleFileDialog(path);
     }
 
-    public void clickBtnNext() {
+    public void clickNextBtn() {
         nextBtn.click();
     }
 }

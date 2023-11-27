@@ -18,7 +18,7 @@ public class HideHelpTest extends BaseTest {
         homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
-        homePage.clickLinkNext();
+        homePage.clickNextLink();
         helpForm = new HelpForm();
         helpForm.clickHideHelpBtn();
         Assert.assertTrue(helpForm.state().waitForNotDisplayed(), "Help form is not hidden");

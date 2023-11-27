@@ -8,8 +8,6 @@ import pages.LoginForm;
 import pages.PersonalDetailsForm;
 import utils.RandomUtils;
 
-import java.awt.*;
-
 import static aquality.selenium.browser.AqualityServices.getBrowser;
 
 public class LoginTest extends BaseTest {
@@ -25,12 +23,12 @@ public class LoginTest extends BaseTest {
     final static String IMAGE_PATH = "src/test/resources/java-collections.png";
 
     @Test
-    public void loginTest() throws AWTException {
+    public void loginTest() {
         getBrowser().goTo(url);
         homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
-        homePage.clickLinkNext();
+        homePage.clickNextLink();
         loginForm = new LoginForm();
         Assert.assertTrue(loginForm.state().waitForDisplayed(), "Card '1' is not open");
 
@@ -41,17 +39,17 @@ public class LoginTest extends BaseTest {
         loginForm.setPassword(password);
         loginForm.setEmail(email);
         loginForm.setDomain(domain);
-        loginForm.clickBtnDropdown();
-        loginForm.selectSuffix(".com");
-        loginForm.checkChbTerms();
-        loginForm.clickBtnNext();
+        loginForm.clickDropdownBtn();
+        loginForm.selectSuffix();
+        loginForm.checkTermsCb();
+        loginForm.clickNextBtn();
         interestsForm = new InterestsForm();
         Assert.assertTrue(interestsForm.state().waitForDisplayed(), "Card '2' is not open");
 
         interestsForm.uploadPicture(IMAGE_PATH);
-        interestsForm.checkChbUnselectAll();
+        interestsForm.checkUnselectAllCb();
         interestsForm.selectInterests(INTERESTS);
-        interestsForm.clickBtnNext();
+        interestsForm.clickNextBtn();
         PersonalDetailsForm personalDetailsForm = new PersonalDetailsForm();
         Assert.assertTrue(personalDetailsForm.state().waitForDisplayed(), "Card '3' is not open");
     }

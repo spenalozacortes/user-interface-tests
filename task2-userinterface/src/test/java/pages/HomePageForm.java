@@ -12,7 +12,7 @@ public class HomePageForm extends Form {
         super(By.className("start__button"), "Home Page");
     }
 
-    public void clickLinkNext() {
+    public void clickNextLink() {
         nextLink.click();
     }
 }

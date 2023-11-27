@@ -18,7 +18,7 @@ public class AcceptCookiesTest extends BaseTest {
         homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
-        homePage.clickLinkNext();
+        homePage.clickNextLink();
         cookiesForm = new CookiesForm();
         cookiesForm.clickAcceptCookiesBtn();
         Assert.assertTrue(cookiesForm.state().waitForNotDisplayed(), "Cookies form is not closed");

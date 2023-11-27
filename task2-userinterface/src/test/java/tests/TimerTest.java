@@ -20,7 +20,7 @@ public class TimerTest extends BaseTest {
         homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
-        homePage.clickLinkNext();
+        homePage.clickNextLink();
         loginForm = new LoginForm();
         String actualTimer = loginForm.getTimerText();
         Assert.assertEquals(actualTimer, TIMER, String.format("Timer starts at %s instead of %s", actualTimer, TIMER));
