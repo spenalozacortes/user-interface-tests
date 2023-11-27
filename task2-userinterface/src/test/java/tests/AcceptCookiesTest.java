@@ -6,6 +6,7 @@ import pages.CookiesForm;
 import pages.HomePageForm;
 
 import static aquality.selenium.browser.AqualityServices.getBrowser;
+import static config.EnvironmentConfig.getUrl;
 
 public class AcceptCookiesTest extends BaseTest {
 
@@ -14,7 +15,7 @@ public class AcceptCookiesTest extends BaseTest {
 
     @Test
     public void acceptCookiesTest() {
-        getBrowser().goTo(url);
+        getBrowser().goTo(getUrl());
         homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 

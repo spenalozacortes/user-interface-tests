@@ -6,6 +6,7 @@ import pages.HomePageForm;
 import pages.LoginForm;
 
 import static aquality.selenium.browser.AqualityServices.getBrowser;
+import static config.EnvironmentConfig.getUrl;
 
 public class TimerTest extends BaseTest {
 
@@ -15,7 +16,7 @@ public class TimerTest extends BaseTest {
 
     @Test
     public void timerTest() {
-        getBrowser().goTo(url);
+        getBrowser().goTo(getUrl());
         homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 

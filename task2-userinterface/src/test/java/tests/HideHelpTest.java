@@ -6,6 +6,7 @@ import pages.HelpForm;
 import pages.HomePageForm;
 
 import static aquality.selenium.browser.AqualityServices.getBrowser;
+import static config.EnvironmentConfig.getUrl;
 
 public class HideHelpTest extends BaseTest {
 
@@ -14,7 +15,7 @@ public class HideHelpTest extends BaseTest {
 
     @Test
     public void hideHelpTest() {
-        getBrowser().goTo(url);
+        getBrowser().goTo(getUrl());
         homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 

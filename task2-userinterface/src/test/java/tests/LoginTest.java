@@ -9,6 +9,7 @@ import pages.PersonalDetailsForm;
 import utils.RandomUtils;
 
 import static aquality.selenium.browser.AqualityServices.getBrowser;
+import static config.EnvironmentConfig.getUrl;
 
 public class LoginTest extends BaseTest {
 
@@ -23,7 +24,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void loginTest() {
-        getBrowser().goTo(url);
+        getBrowser().goTo(getUrl());
         homePage = new HomePageForm();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 

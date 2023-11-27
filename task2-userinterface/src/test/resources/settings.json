@@ -22,7 +22,7 @@
         "Performance": "All"
       },
       "startArguments": [
-        "window-size=1920,1080",
+        "--start-maximized",
         "--no-sandbox",
         "--disable-popup-blocking",
         "--disable-gpu",
