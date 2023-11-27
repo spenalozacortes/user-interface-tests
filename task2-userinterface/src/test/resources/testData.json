@@ -1,9 +1,3 @@
 {
-  "passwordLength": 10,
-  "emailLength": 5,
-  "domain": "mail",
-  "suffix": ".com",
-  "image": "src/test/resources/java-collections.png",
-  "interests": 3,
-  "timer": "00:00:00"
+
 }

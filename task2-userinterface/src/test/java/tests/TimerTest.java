@@ -12,6 +12,8 @@ public class TimerTest extends BaseTest {
     HomePageForm homePage;
     LoginForm loginForm;
 
+    static final String TIMER = "00:00:00";
+
     @Test
     public void timerTest() {
         getBrowser().goTo(url);
@@ -20,8 +22,7 @@ public class TimerTest extends BaseTest {
 
         homePage.clickLinkNext();
         loginForm = new LoginForm();
-        String expectedTimer = testData.getValue("/timer").toString();
         String actualTimer = loginForm.getTimerText();
-        Assert.assertEquals(actualTimer, expectedTimer, String.format("Timer starts at %s instead of %s", actualTimer, expectedTimer));
+        Assert.assertEquals(actualTimer, TIMER, String.format("Timer starts at %s instead of %s", actualTimer, TIMER));
     }
 }

@@ -18,6 +18,9 @@ public class LoginTest extends BaseTest {
     LoginForm loginForm;
     InterestsForm interestsForm;
 
+    final static int INTERESTS = 3;
+    final static String IMAGE_PATH = "src/test/resources/java-collections.png";
+
     @Test
     public void loginTest() throws AWTException {
         getBrowser().goTo(url);
@@ -30,25 +33,20 @@ public class LoginTest extends BaseTest {
 
         String email = RandomUtils.generateRandomEmail();
         String password = RandomUtils.generateRandomPassword(email);
-        String domain = testData.getValue("/domain").toString();
-        String suffix = testData.getValue("/suffix").toString();
 
         loginForm.setPassword(password);
         loginForm.setEmail(email);
-        loginForm.setDomain(domain);
+        loginForm.setDomain("mail");
         loginForm.clickBtnDropdown();
-        loginForm.selectSuffix(suffix);
+        loginForm.selectSuffix(".com");
         loginForm.checkChbTerms();
         loginForm.clickBtnNext();
         interestsForm = new InterestsForm();
         Assert.assertTrue(interestsForm.state().waitForDisplayed(), "Card '2' is not open");
 
-        String imagePath = testData.getValue("/image").toString();
-        int numberOfInterests = (int) testData.getValue("/interests");
-
-        interestsForm.uploadPicture(imagePath);
+        interestsForm.uploadPicture(IMAGE_PATH);
         interestsForm.checkChbUnselectAll();
-        interestsForm.selectInterests(numberOfInterests);
+        interestsForm.selectInterests(INTERESTS);
         interestsForm.clickBtnNext();
         PersonalDetailsForm personalDetailsForm = new PersonalDetailsForm();
         Assert.assertTrue(personalDetailsForm.state().waitForDisplayed(), "Card '3' is not open");

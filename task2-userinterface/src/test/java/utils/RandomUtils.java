@@ -1,8 +1,5 @@
 package utils;
 
-import aquality.selenium.core.utilities.ISettingsFile;
-import aquality.selenium.core.utilities.JsonSettingsFile;
-
 import java.util.Random;
 
 public class RandomUtils {
@@ -11,7 +8,7 @@ public class RandomUtils {
     private static final String UPPER_CASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String LOWER_CASE = "abcdefghijklmnopqrstuvwxyz";
     private static final String DIGITS = "0123456789";
-    static ISettingsFile testData = new JsonSettingsFile("testData.json");
+    private static final int length = 10;
 
     public static int getRandomInt(int range) {
         Random random = new Random();
@@ -20,7 +17,6 @@ public class RandomUtils {
 
     public static String generateRandomPassword(String email) {
         StringBuilder password = new StringBuilder();
-        int length = (int) testData.getValue("/passwordLength") - 1;
         String emailLetter = String.valueOf(email.charAt(getRandomInt(email.length())));
 
         password.append(UPPER_CASE.charAt(getRandomInt(UPPER_CASE.length())));
@@ -45,7 +41,6 @@ public class RandomUtils {
     }
 
     public static String generateRandomEmail() {
-        int length = (int) testData.getValue("/emailLength");
         StringBuilder randomString = new StringBuilder();
 
         for (int i = 0; i < length; i++) {
