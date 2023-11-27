@@ -18,6 +18,9 @@ public class LoginTest extends BaseTest {
     LoginForm loginForm;
     InterestsForm interestsForm;
 
+    final static int EMAIL_LENGTH = 8;
+    final static int PASSWORD_LENGTH = 10;
+    final static int DOMAIN_LENGTH = 5;
     final static int INTERESTS = 3;
     final static String IMAGE_PATH = "src/test/resources/java-collections.png";
 
@@ -31,12 +34,13 @@ public class LoginTest extends BaseTest {
         loginForm = new LoginForm();
         Assert.assertTrue(loginForm.state().waitForDisplayed(), "Card '1' is not open");
 
-        String email = RandomUtils.generateRandomEmail();
-        String password = RandomUtils.generateRandomPassword(email);
+        String email = RandomUtils.generateRandomString(EMAIL_LENGTH);
+        String password = RandomUtils.generateRandomPassword(PASSWORD_LENGTH, email);
+        String domain = RandomUtils.generateRandomString(DOMAIN_LENGTH);
 
         loginForm.setPassword(password);
         loginForm.setEmail(email);
-        loginForm.setDomain("mail");
+        loginForm.setDomain(domain);
         loginForm.clickBtnDropdown();
         loginForm.selectSuffix(".com");
         loginForm.checkChbTerms();
