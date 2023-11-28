@@ -20,7 +20,7 @@ public class InterestsForm extends Form {
     private static final By OPTIONS_BY = By.xpath("//*[contains(@for, 'interest') and not(contains(@for, 'selectall'))]");
 
     public InterestsForm() {
-        super(By.xpath("//*[@class='page-indicator' and text()='2 / 4']"), "Card 2");
+        super(By.className("avatar-and-interests-page"), "Interests form");
     }
 
     public void checkUnselectAllCb() {

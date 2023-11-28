@@ -23,7 +23,7 @@ public class LoginForm extends Form {
     private static final By DROPDOWN_BY = By.xpath("//*[@class='dropdown__list-item']");
 
     public LoginForm() {
-        super(By.xpath("//*[@class='page-indicator' and text()='1 / 4']"), "Card 1");
+        super(By.className("login-form"), "Login form");
     }
 
     public void setPassword(String password) {
