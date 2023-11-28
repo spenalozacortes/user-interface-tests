@@ -1,5 +1,6 @@
 package tests;
 
+import config.TestDataConfig;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.GamePage;
@@ -8,17 +9,16 @@ import utils.RandomUtils;
 
 import static aquality.selenium.browser.AqualityServices.getBrowser;
 import static config.EnvironmentConfig.getUrl;
-import static config.TestDataConfig.*;
 
 public class LoginTest extends BaseTest {
 
     private HomePage homePage;
     private GamePage gamePage;
-    private static final int EMAIL_LENGTH = getEmailLength();
-    private static final int PASSWORD_LENGTH = getPasswordLength();
-    private static final int DOMAIN_LENGTH = getDomainLength();
-    private static final int INTERESTS = getInterests();
-    private static final String IMAGE_PATH = getImagePath();
+    private static final int EMAIL_LENGTH = 8;
+    private static final int PASSWORD_LENGTH = 10;
+    private static final int DOMAIN_LENGTH = 5;
+    private static final int INTERESTS = 3;
+    private static final String IMAGE_PATH = TestDataConfig.getImagePath();
 
     @Test
     public void loginTest() {

@@ -1,8 +1,3 @@
 {
-  "emailLength": 8,
-  "passwordLength": 10,
-  "domainLength": 5,
-  "interests": 3,
-  "imagePath": "src/test/resources/java-collections.png",
-  "timer": "00:00:00"
+  "imagePath": "src/test/resources/java-collections.png"
 }
