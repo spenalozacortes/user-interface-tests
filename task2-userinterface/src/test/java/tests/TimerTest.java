@@ -7,12 +7,13 @@ import pages.HomePage;
 
 import static aquality.selenium.browser.AqualityServices.getBrowser;
 import static config.EnvironmentConfig.getUrl;
+import static config.TestDataConfig.getTimer;
 
 public class TimerTest extends BaseTest {
 
     private HomePage homePage;
     private GamePage gamePage;
-    private static final String TIMER = "00:00:00";
+    private static final String TIMER = getTimer();
 
     @Test
     public void timerTest() {
