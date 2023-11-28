@@ -24,8 +24,7 @@ public class FileUtils {
             robot.keyPress(KeyEvent.VK_ENTER);
             robot.keyRelease(KeyEvent.VK_ENTER);
         } catch (AWTException e) {
-            System.err.println("Error handling file dialog: " + e.getMessage());
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }
