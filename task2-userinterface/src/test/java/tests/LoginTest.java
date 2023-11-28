@@ -2,10 +2,8 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HomePageForm;
-import pages.InterestsForm;
-import pages.LoginForm;
-import pages.PersonalDetailsForm;
+import pages.GamePage;
+import pages.HomePage;
 import utils.RandomUtils;
 
 import static aquality.selenium.browser.AqualityServices.getBrowser;
@@ -13,9 +11,8 @@ import static config.EnvironmentConfig.getUrl;
 
 public class LoginTest extends BaseTest {
 
-    private HomePageForm homePage;
-    private LoginForm loginForm;
-    private InterestsForm interestsForm;
+    private HomePage homePage;
+    private GamePage gamePage;
     private static final int EMAIL_LENGTH = 8;
     private static final int PASSWORD_LENGTH = 10;
     private static final int DOMAIN_LENGTH = 5;
@@ -25,32 +22,30 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginTest() {
         getBrowser().goTo(getUrl());
-        homePage = new HomePageForm();
+        homePage = new HomePage();
         Assert.assertTrue(homePage.state().waitForDisplayed(), "Welcome page is not open");
 
         homePage.clickNextLink();
-        loginForm = new LoginForm();
-        Assert.assertTrue(loginForm.state().waitForDisplayed(), "Login form should be displayed");
+        gamePage = new GamePage();
+        Assert.assertTrue(gamePage.loginForm().state().waitForDisplayed(), "Login form should be displayed");
 
         String email = RandomUtils.generateRandomString(EMAIL_LENGTH);
         String password = RandomUtils.generateRandomPassword(PASSWORD_LENGTH, email);
         String domain = RandomUtils.generateRandomString(DOMAIN_LENGTH);
 
-        loginForm.setPassword(password);
-        loginForm.setEmail(email);
-        loginForm.setDomain(domain);
-        loginForm.clickDropdownBtn();
-        loginForm.selectRandomSuffix();
-        loginForm.checkTermsCb();
-        loginForm.clickNextBtn();
-        interestsForm = new InterestsForm();
-        Assert.assertTrue(interestsForm.state().waitForDisplayed(), "Interests form should be displayed");
+        gamePage.loginForm().setPassword(password);
+        gamePage.loginForm().setEmail(email);
+        gamePage.loginForm().setDomain(domain);
+        gamePage.loginForm().clickDropdownBtn();
+        gamePage.loginForm().selectRandomSuffix();
+        gamePage.loginForm().checkTermsCb();
+        gamePage.loginForm().clickNextBtn();
+        Assert.assertTrue(gamePage.interestsForm().state().waitForDisplayed(), "Interests form should be displayed");
 
-        interestsForm.uploadPicture(IMAGE_PATH);
-        interestsForm.checkUnselectAllCb();
-        interestsForm.selectRandomInterests(INTERESTS);
-        interestsForm.clickNextBtn();
-        PersonalDetailsForm personalDetailsForm = new PersonalDetailsForm();
-        Assert.assertTrue(personalDetailsForm.state().waitForDisplayed(), "Personal details form should be displayed");
+        gamePage.interestsForm().uploadPicture(IMAGE_PATH);
+        gamePage.interestsForm().checkUnselectAllCb();
+        gamePage.interestsForm().selectRandomInterests(INTERESTS);
+        gamePage.interestsForm().clickNextBtn();
+        Assert.assertTrue(gamePage.personalDetailsForm().state().waitForDisplayed(), "Personal details form should be displayed");
     }
 }

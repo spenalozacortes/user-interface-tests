@@ -1,4 +1,4 @@
-package pages;
+package pages.forms;
 
 import aquality.selenium.elements.ElementType;
 import aquality.selenium.elements.interfaces.IButton;
