@@ -10,9 +10,9 @@ import static config.EnvironmentConfig.getUrl;
 
 public class TimerTest extends BaseTest {
 
+    private static final String TIMER = "00:00:00";
     private HomePage homePage;
     private GamePage gamePage;
-    private static final String TIMER = "00:00:00";
 
     @Test
     public void timerTest() {

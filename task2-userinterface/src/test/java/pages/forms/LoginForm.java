@@ -13,6 +13,7 @@ import java.util.List;
 
 public class LoginForm extends Form {
 
+    private static final By DROPDOWN_BY = By.xpath("//*[@class='dropdown__list-item']");
     private final ITextBox passwordTxb = getElementFactory().getTextBox(By.xpath("//*[@placeholder='Choose Password']"), "Password text box");
     private final ITextBox emailTxb = getElementFactory().getTextBox(By.xpath("//*[@placeholder='Your email']"), "Password");
     private final ITextBox domainTxb = getElementFactory().getTextBox(By.xpath("//*[@placeholder='Domain']"), "Domain");
@@ -20,7 +21,6 @@ public class LoginForm extends Form {
     private final ICheckBox termsCb = getElementFactory().getCheckBox(By.xpath("//*[contains(@class, 'icon-check')]"), "Terms and conditions");
     private final IButton nextBtn = getElementFactory().getButton(By.xpath("//*[@class='button--secondary']"), "Next");
     private final ILabel timerLbl = getElementFactory().getLabel(By.xpath("//*[contains(@class, 'timer')]"), "Timer");
-    private static final By DROPDOWN_BY = By.xpath("//*[@class='dropdown__list-item']");
 
     public LoginForm() {
         super(By.className("login-form"), "Login form");

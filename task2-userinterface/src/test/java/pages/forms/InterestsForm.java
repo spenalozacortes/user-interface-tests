@@ -14,10 +14,10 @@ import java.util.List;
 
 public class InterestsForm extends Form {
 
+    private static final By OPTIONS_BY = By.xpath("//*[contains(@for, 'interest') and not(contains(@for, 'selectall'))]");
     private final ICheckBox unselectAllCb = getElementFactory().getCheckBox(By.xpath("//*[@for='interest_unselectall']"), "Unselect all");
     private final ILink uploadPictureLink = getElementFactory().getLink(By.xpath("//a[contains(@class,'upload-button')]"), "Upload link");
     private final IButton nextBtn = getElementFactory().getButton(By.xpath("//button[text()='Next']"), "Next button");
-    private static final By OPTIONS_BY = By.xpath("//*[contains(@for, 'interest') and not(contains(@for, 'selectall'))]");
 
     public InterestsForm() {
         super(By.className("avatar-and-interests-page"), "Interests form");

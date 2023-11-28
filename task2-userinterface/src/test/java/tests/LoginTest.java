@@ -12,13 +12,13 @@ import static config.EnvironmentConfig.getUrl;
 
 public class LoginTest extends BaseTest {
 
-    private HomePage homePage;
-    private GamePage gamePage;
     private static final int EMAIL_LENGTH = 8;
     private static final int PASSWORD_LENGTH = 10;
     private static final int DOMAIN_LENGTH = 5;
     private static final int INTERESTS = 3;
     private static final String IMAGE_PATH = TestDataConfig.getImagePath();
+    private HomePage homePage;
+    private GamePage gamePage;
 
     @Test
     public void loginTest() {
